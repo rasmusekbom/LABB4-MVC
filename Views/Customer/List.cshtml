@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Bokhandel.Models.Customer>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+        <meta name="viewport" content="width = device-width , initial-scale = 1" />
+        <title>Rasmus Library - Customers</title>
+    </head>
+    <body>
+        <h1 class="create-form">Customers</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhoneNr)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNr)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.CustomerId" class="buttons">Edit</a> |
+                            <a asp-action="Information" asp-route-id="@item.CustomerId" class="buttons">Information</a> |
+                            <a asp-action="Delete" asp-route-id="@item.CustomerId" class="buttons">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <p class="customer-p create-form">
+                <a asp-action="Create">Register New Customer</a>
+            </p>
+        </table>
+    </body>
+</html>
